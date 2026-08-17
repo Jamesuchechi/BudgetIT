@@ -27,11 +27,11 @@ This document serves as the master production roadmap, feature backlog, and oper
 - [x] Implement a unified page header component with breadcrumbs, action buttons, and active workspace badges across all app screens.
 
 ### 1.2 Design Tokens & Theme Engine
-- [ ] Refine CSS custom properties in `src/styles.css` using dynamic HSL color spaces.
-- [ ] Ensure full dark/light theme parity with crisp contrast across all UI components.
-- [ ] Build a sleek Theme Toggle widget (Light, Dark, System Preference) in user profile and top header.
-- [ ] Add custom glassmorphism card variations with subtle backdrop-blur and border highlights for key summary widgets.
-- [ ] Add smooth framer-motion/CSS micro-animations for card hovers, modal overlays, dropdown expansions, and toast popups.
+- [x] Refine CSS custom properties in `src/styles.css` using dynamic HSL color spaces.
+- [x] Ensure full dark/light theme parity with crisp contrast across all UI components.
+- [x] Build a sleek Theme Toggle widget (Light, Dark, System Preference) in user profile and top header.
+- [x] Add custom glassmorphism card variations with subtle backdrop-blur and border highlights for key summary widgets.
+- [x] Add smooth framer-motion/CSS micro-animations for card hovers, modal overlays, dropdown expansions, and toast popups.
 
 ### 1.3 Atomized Component Library Enhancement
 - [ ] **Data Tables (`src/components/ui/table.tsx`)**:
