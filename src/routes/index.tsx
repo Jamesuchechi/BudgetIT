@@ -34,6 +34,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 import logoImg from "@/assets/logo.png";
 import heroDashboardImg from "@/assets/hero-dashboard.png";
+import netflixHeroBg from "@/assets/netflix-hero-bg.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -44,40 +45,32 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
-      {/* Top Banner */}
-      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-4 py-2 text-center text-xs font-medium text-white shadow-sm">
-        <span className="inline-flex items-center gap-1.5">
-          <Sparkles className="h-3.5 w-3.5" />
-          <strong className="font-semibold">BudgetIT v2.0 Enterprise Engine:</strong> Universal Excel & Multi-Format Financial Imports Now Live!
-        </span>
-      </div>
-
-      {/* Glassmorphism Header */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      {/* Floating Netflix-Style Header */}
+      <header className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-gradient-to-b from-black/90 via-black/50 to-transparent backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3 font-bold tracking-tight">
-            <img src={logoImg} alt="BudgetIT Logo" className="h-9 w-9 rounded-lg object-contain shadow-sm" />
+            <img src={logoImg} alt="BudgetIT Logo" className="h-9 w-9 rounded-lg object-contain shadow-lg ring-1 ring-white/20" />
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight leading-none text-foreground">BudgetIT</span>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mt-0.5">Enterprise FP&A</span>
+              <span className="text-2xl font-black tracking-tight leading-none text-white drop-shadow">BudgetIT</span>
+              <span className="text-[9px] font-mono text-red-500 font-bold uppercase tracking-widest mt-0.5">Enterprise FP&A</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-            <a href="#integrations" className="transition-colors hover:text-foreground">Integrations</a>
-            <a href="#variance" className="transition-colors hover:text-foreground">Variance Engine</a>
-            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
-            <Link to="/docs" className="transition-colors hover:text-foreground">Docs</Link>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+            <a href="#features" className="transition-colors hover:text-white">Features</a>
+            <a href="#integrations" className="transition-colors hover:text-white">Integrations</a>
+            <a href="#variance" className="transition-colors hover:text-white">Variance Engine</a>
+            <a href="#faq" className="transition-colors hover:text-white">FAQ</a>
+            <Link to="/docs" className="transition-colors hover:text-white">Docs</Link>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <ThemeToggle />
             <Link
               to="/auth"
               search={{ mode: "login" }}
-              className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-3 py-2"
+              className="text-sm font-medium text-gray-200 hover:text-white transition-colors px-2 py-1"
             >
               Sign In
             </Link>
@@ -85,86 +78,76 @@ function Landing() {
               to="/auth"
               search={{ mode: "signup" }}
             >
-              <Button size="sm" className="font-semibold shadow-md gap-1.5">
-                Launch Workspace <ArrowRight className="h-4 w-4" />
+              <Button size="sm" className="font-bold bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-600/30 px-4">
+                Launch Workspace
               </Button>
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 border-b border-border">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-500/20 via-cyan-500/20 to-purple-500/20 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse-slow" />
+      {/* Netflix Hero Landing Section - Full Cover Background */}
+      <section className="relative overflow-hidden min-h-[85vh] flex items-center justify-center pt-32 pb-36 sm:pt-40 sm:pb-44 bg-black text-white">
+        {/* Netflix Tilted Grid Background Image (Full Cover, Edge-to-Edge) */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          <img
+            src={netflixHeroBg}
+            alt="BudgetIT Financial Grid Backdrop"
+            className="h-full w-full object-cover object-center scale-105 opacity-75 brightness-95 contrast-110"
+          />
+          {/* Netflix Dark Vignette Overlay for Crisp Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-black/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.8)_100%)]" />
+        </div>
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="outline" className="mb-6 px-3 py-1 border-primary/30 bg-primary/10 text-primary rounded-full font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2">
-              <Zap className="h-3.5 w-3.5" /> Next-Gen FP&A & Spend Governance
-            </Badge>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full text-center">
+          <Badge variant="outline" className="mb-6 px-4 py-1.5 border-red-500/50 bg-red-600/20 text-red-400 backdrop-blur-md rounded-full font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2 shadow-lg">
+            <Sparkles className="h-4 w-4 text-red-500" /> Netflix-Class Spend Intelligence
+          </Badge>
 
-            <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
-              Corporate Budgeting <br />
-              <span className="text-gradient">Without Spreadsheet Chaos</span>
-            </h1>
+          <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-white drop-shadow-xl">
+            Unlimited Financial Clarity, <br />
+            <span className="text-gradient">Budgeting & Spend Control</span>
+          </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Stop rebuilding fragile quarterly spreadsheet models. Connect multi-format exports (<span className="font-semibold text-foreground">Excel, CSV, PDF statements, QuickBooks, NetSuite, Salesforce</span>) to an intelligent real-time spend dashboard leadership actually trusts.
+          <p className="mt-6 text-xl sm:text-2xl text-gray-200 font-medium max-w-3xl mx-auto drop-shadow-md">
+            Sub-second query performance. Connect multi-format exports (<span className="text-white font-bold">Excel, CSV, QuickBooks, NetSuite</span>) seamlessly.
+          </p>
+
+          {/* Netflix-Style Email / Workspace Input CTA Bar */}
+          <div className="mt-10 max-w-2xl mx-auto">
+            <p className="text-base font-medium text-gray-200 mb-4 drop-shadow">
+              Ready to eliminate spreadsheet chaos? Enter your work email to get started.
             </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/auth" search={{ mode: "signup" }} className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base font-semibold shadow-lg shadow-primary/25 gap-2">
-                  Start Free Workspace <ArrowRight className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/app/dashboard" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto h-12 px-8 text-base font-medium">
-                  Explore Live Demo
-                </Button>
-              </Link>
-            </div>
-
-            <div className="mt-6 flex items-center justify-center gap-6 text-xs text-muted-foreground font-medium">
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> No credit card required</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> Sub-second query speed</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> Enterprise RLS Security</span>
-            </div>
-          </div>
-
-          {/* Hero Mockup Preview */}
-          <div className="mt-14 relative mx-auto max-w-5xl rounded-2xl border border-border/80 bg-card/60 p-2 shadow-2xl backdrop-blur-xl glow-blue">
-            <div className="relative rounded-xl overflow-hidden border border-border">
-              <img
-                src={heroDashboardImg}
-                alt="BudgetIT Dashboard Preview"
-                className="w-full h-auto object-cover rounded-xl"
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
+            >
+              <input
+                type="email"
+                placeholder="Work email address"
+                className="h-14 px-5 rounded-md bg-black/70 border border-gray-500 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent w-full sm:flex-1 text-base shadow-2xl backdrop-blur-md transition-all"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Floating Glass Chips */}
-            <div className="absolute -bottom-6 left-6 hidden lg:flex items-center gap-3 p-4 rounded-xl glass-panel shadow-xl border border-border/80 animate-float">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-emerald-500/10 text-emerald-500">
-                <TrendingUp className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xs font-mono uppercase text-muted-foreground">Variance Accuracy</div>
-                <div className="text-lg font-black tracking-tight">99.4% Precision</div>
-              </div>
-            </div>
-
-            <div className="absolute -top-6 right-6 hidden lg:flex items-center gap-3 p-4 rounded-xl glass-panel shadow-xl border border-border/80 animate-float" style={{ animationDelay: "2s" }}>
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-blue-500/10 text-blue-500">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xs font-mono uppercase text-muted-foreground">Multi-Tenant Isolation</div>
-                <div className="text-lg font-black tracking-tight">Supabase RLS Protected</div>
-              </div>
-            </div>
+              <Link to="/auth" search={{ mode: "signup" }} className="w-full sm:w-auto">
+                <Button size="lg" className="h-14 px-8 text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-md shadow-xl shadow-red-600/50 gap-2 w-full sm:w-auto transition-transform hover:scale-[1.03] active:scale-95">
+                  Get Started <ChevronRight className="h-6 w-6 stroke-[3]" />
+                </Button>
+              </Link>
+            </form>
           </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-200 font-medium">
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> No credit card required</span>
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> Sub-second query speed</span>
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> Enterprise RLS Security</span>
+          </div>
+        </div>
+
+        {/* Curved Arch Separator (Signature Netflix Feature) */}
+        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[140%] h-20 sm:h-28 overflow-hidden pointer-events-none z-20">
+          <div className="w-full h-full border-t-2 border-red-600/60 bg-background rounded-t-[100%] shadow-[0_-15px_40px_rgba(220,38,38,0.3)]" />
         </div>
       </section>
 

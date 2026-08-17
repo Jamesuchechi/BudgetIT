@@ -34,28 +34,28 @@ This document serves as the master production roadmap, feature backlog, and oper
 - [x] Add smooth framer-motion/CSS micro-animations for card hovers, modal overlays, dropdown expansions, and toast popups.
 
 ### 1.3 Atomized Component Library Enhancement
-- [ ] **Data Tables (`src/components/ui/table.tsx`)**:
-  - [ ] Sticky header support during long scrolling.
-  - [ ] Column sorting indicators with directional arrows.
-  - [ ] Multi-column density toggle (Compact, Default, Comfortable).
-  - [ ] Empty state illustrators for zero-data tables.
-  - [ ] Skeleton loaders for async data fetching states.
-- [ ] **Modal Dialogs & Sheets**:
-  - [ ] Lock background scroll when modals/sheets are active.
-  - [ ] Add keyboard `Escape` key close listeners and backdrop click handlers.
-  - [ ] Implement slide-over side sheets for deep item editing.
-- [ ] **Buttons & Interactive Elements**:
-  - [ ] Loading spinners inside action buttons during async form submissions.
-  - [ ] Confirmation dialog triggers for destructive actions (e.g. deleting a budget entry).
-- [ ] **Toasts & Feedback**:
-  - [ ] Standardize notification toasts using Sonner for success, warning, error, and info states.
+- [x] **Data Tables (`src/components/ui/table.tsx`)**:
+  - [x] Sticky header support during long scrolling.
+  - [x] Column sorting indicators with directional arrows.
+  - [x] Multi-column density toggle (Compact, Default, Comfortable).
+  - [x] Empty state illustrators for zero-data tables.
+  - [x] Skeleton loaders for async data fetching states.
+- [x] **Modal Dialogs & Sheets**:
+  - [x] Lock background scroll when modals/sheets are active.
+  - [x] Add keyboard `Escape` key close listeners and backdrop click handlers.
+  - [x] Implement slide-over side sheets for deep item editing.
+- [x] **Buttons & Interactive Elements**:
+  - [x] Loading spinners inside action buttons during async form submissions.
+  - [x] Confirmation dialog triggers for destructive actions (e.g. deleting a budget entry).
+- [x] **Toasts & Feedback**:
+  - [x] Standardize notification toasts using Sonner for success, warning, error, and info states.
 
 ### 1.4 Form Controls & Input Validation
-- [ ] Implement strict Zod schemas for all forms across the application.
-- [ ] Add currency input mask component supporting real-time thousand separators and currency symbol positioning.
-- [ ] Support multi-currency selection (`USD $`, `EUR €`, `GBP £`, `NGN ₦`, `CAD $`, `AUD $`) with configurable base org currency.
-- [ ] Date Range Picker component supporting presets (This Month, Last Month, This Quarter, YTD, Custom Range).
-- [ ] Vendor search & auto-complete input with memory of previously logged vendors.
+- [x] Implement strict Zod schemas for all forms across the application.
+- [x] Add currency input mask component supporting real-time thousand separators and currency symbol positioning.
+- [x] Support multi-currency selection (`USD $`, `EUR €`, `GBP £`, `NGN ₦`, `CAD $`, `AUD $`) with configurable base org currency.
+- [x] Date Range Picker component supporting presets (This Month, Last Month, This Quarter, YTD, Custom Range).
+- [x] Vendor search & auto-complete input with memory of previously logged vendors.
 
 ---
 
