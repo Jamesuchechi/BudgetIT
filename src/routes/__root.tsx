@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { reportError } from "../lib/error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -40,7 +40,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
@@ -77,24 +77,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BudgetIT — Live budget vs. actual dashboards" },
+      { title: "BudgetIT — Real-Time Financial Variance & Budget Dashboards" },
       {
         name: "description",
         content:
-          "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots.",
+          "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams.",
       },
-      { property: "og:title", content: "BudgetIT — Live budget vs. actual dashboards" },
+      { property: "og:title", content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards" },
       {
         property: "og:description",
         content:
-          "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots.",
+          "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "BudgetIT — Live budget vs. actual dashboards" },
-      { name: "twitter:description", content: "Kill the quarterly budget-model rebuild. Import CSVs from your finance or CRM tool and get a live spend dashboard your leadership can open instead of Tableau screenshots." },
-      { property: "og:image", content: "https://budget-pulse-zen.lovable.app/__l5e/assets-v1/8de0b3ab-5594-43c3-9e05-c4c1b7436560/budget-pulse-dashboard.png" },
-      { name: "twitter:image", content: "https://budget-pulse-zen.lovable.app/__l5e/assets-v1/8de0b3ab-5594-43c3-9e05-c4c1b7436560/budget-pulse-dashboard.png" },
+      { name: "twitter:title", content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards" },
+      { name: "twitter:description", content: "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

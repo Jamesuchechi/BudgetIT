@@ -179,8 +179,8 @@ function DocsPage() {
                 and the head metadata in each route.
               </li>
               <li>
-                <strong className="text-foreground">Backend.</strong> A remix creates a fresh
-                Lovable Cloud backend for the new project — the original project's data,
+                <strong className="text-foreground">Backend.</strong> A fresh project setup creates a
+                Supabase backend — the original project's data,
                 users, and secrets do <em>not</em> carry over. Migrations under
                 <code className="rounded bg-muted px-1 py-0.5 text-foreground"> supabase/migrations/</code> re-run
                 automatically against the new backend, which recreates the schema, RLS

@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Activity } from "lucide-react";
 import { setCurrentOrgId } from "@/hooks/use-org";
-import { lovable } from "@/integrations/lovable/index";
 
 const authSearch = z.object({
   mode: z.enum(["login", "signup"]).catch("login"),
@@ -104,33 +103,16 @@ function AuthPage() {
   async function googleSignIn() {
     setLoading(true);
     try {
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri:
-          window.location.origin +
-          "/auth" +
-          (safeRedirect ? `?redirect=${encodeURIComponent(safeRedirect)}` : ""),
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo:
+            window.location.origin +
+            "/auth" +
+            (safeRedirect ? `?redirect=${encodeURIComponent(safeRedirect)}` : ""),
+        },
       });
-      if (result.error) throw result.error;
-      if (result.redirected) return; // browser is navigating
-      // Popup path: session already set by the helper. Route based on membership.
-      const { data: userData } = await supabase.auth.getUser();
-      if (!userData.user) throw new Error("Sign-in did not complete");
-      if (safeRedirect) return goNext("/app/dashboard");
-
-      const { data: m } = await supabase
-        .from("org_members")
-        .select("org_id")
-        .eq("user_id", userData.user.id)
-        .limit(1)
-        .maybeSingle();
-      if (m?.org_id) {
-        setCurrentOrgId(m.org_id);
-        navigate({ to: "/app/dashboard" });
-      } else {
-        // No org yet — app shell will show the "create workspace" state,
-        // then push into onboarding after the org is created.
-        navigate({ to: "/app/dashboard" });
-      }
+      if (error) throw error;
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Google sign-in failed");
     } finally {

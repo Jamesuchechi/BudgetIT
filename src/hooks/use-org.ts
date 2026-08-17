@@ -53,3 +53,14 @@ export function setCurrentOrgId(id: string) {
   listeners.forEach((cb) => cb());
 }
 
+export function useCurrentOrg() {
+  const currentOrgId = useCurrentOrgId();
+  const { data: memberships } = useMemberships();
+  const currentOrg = memberships?.find((m) => m.org_id === currentOrgId)?.organizations ?? null;
+  const currentRole = memberships?.find((m) => m.org_id === currentOrgId)?.role ?? null;
+  return { currentOrgId, currentOrg, currentRole, memberships };
+}
+
+export const useOrg = useCurrentOrg;
+
+
