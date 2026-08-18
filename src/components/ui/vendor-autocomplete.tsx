@@ -2,7 +2,14 @@ import * as React from "react";
 import { Check, ChevronsUpDown, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const DEFAULT_VENDORS = [
@@ -68,7 +75,9 @@ export const VendorAutocomplete: React.FC<VendorAutocompleteProps> = ({
         >
           <span className="flex items-center gap-2 truncate">
             <Building2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-            <span className={cn(inputVal ? "text-foreground font-medium" : "text-muted-foreground")}>
+            <span
+              className={cn(inputVal ? "text-foreground font-medium" : "text-muted-foreground")}
+            >
               {inputVal || placeholder}
             </span>
           </span>

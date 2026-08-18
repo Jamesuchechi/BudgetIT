@@ -73,7 +73,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             className={cn(
               variant === "destructive"
                 ? buttonVariants({ variant: "destructive" })
-                : buttonVariants({ variant: "default" })
+                : buttonVariants({ variant: "default" }),
             )}
           >
             {submitting || isLoading ? "Processing..." : confirmText}

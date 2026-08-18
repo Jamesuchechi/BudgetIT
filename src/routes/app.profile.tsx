@@ -19,7 +19,11 @@ function ProfilePage() {
     queryFn: async () => {
       const { data: userData } = await supabase.auth.getUser();
       if (!userData.user) return null;
-      const { data, error } = await supabase.from("profiles").select("*").eq("id", userData.user.id).maybeSingle();
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", userData.user.id)
+        .maybeSingle();
       if (error) throw error;
       return data;
     },
@@ -27,18 +31,25 @@ function ProfilePage() {
 
   const [fullName, setFullName] = useState("");
   const [saving, setSaving] = useState(false);
-  useEffect(() => { if (profile.data) setFullName(profile.data.full_name ?? ""); }, [profile.data]);
+  useEffect(() => {
+    if (profile.data) setFullName(profile.data.full_name ?? "");
+  }, [profile.data]);
 
   async function save() {
     setSaving(true);
     try {
-      const { error } = await supabase.from("profiles").update({ full_name: fullName }).eq("id", profile.data!.id);
+      const { error } = await supabase
+        .from("profiles")
+        .update({ full_name: fullName })
+        .eq("id", profile.data!.id);
       if (error) throw error;
       toast.success("Saved");
       qc.invalidateQueries({ queryKey: ["profile"] });
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Failed");
-    } finally { setSaving(false); }
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -53,9 +64,15 @@ function ProfilePage() {
             </div>
             <div className="space-y-1.5">
               <Label>Full name</Label>
-              <Input className="min-h-11" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+              <Input
+                className="min-h-11"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
             </div>
-            <Button onClick={save} disabled={saving} className="w-full sm:w-auto min-h-11">{saving ? "Saving…" : "Save"}</Button>
+            <Button onClick={save} disabled={saving} className="w-full sm:w-auto min-h-11">
+              {saving ? "Saving…" : "Save"}
+            </Button>
           </div>
         </section>
       </PageBody>

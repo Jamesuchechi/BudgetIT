@@ -4,8 +4,16 @@ import { useBudgetEntries } from "@/hooks/use-budget-entries";
 import { PageHeader, PageBody, EmptyState } from "@/components/app/page";
 import { fmtCurrency } from "@/lib/format";
 import {
-  ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
-  BarChart, Bar, Legend,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  BarChart,
+  Bar,
+  Legend,
 } from "recharts";
 
 export const Route = createFileRoute("/app/analytics")({
@@ -28,9 +36,17 @@ function AnalyticsPage() {
   }, [rows]);
 
   const byDept = useMemo(() => {
-    const map = new Map<string, { department: string; budgeted: number; actual: number; variance: number }>();
+    const map = new Map<
+      string,
+      { department: string; budgeted: number; actual: number; variance: number }
+    >();
     for (const r of rows) {
-      const cur = map.get(r.department) ?? { department: r.department, budgeted: 0, actual: 0, variance: 0 };
+      const cur = map.get(r.department) ?? {
+        department: r.department,
+        budgeted: 0,
+        actual: 0,
+        variance: 0,
+      };
       cur.budgeted += r.budgeted_amount;
       cur.actual += r.actual_amount;
       cur.variance = cur.budgeted - cur.actual;
@@ -40,7 +56,10 @@ function AnalyticsPage() {
   }, [rows]);
 
   const rankings = useMemo(() => {
-    const byCat = new Map<string, { key: string; variance: number; budgeted: number; actual: number }>();
+    const byCat = new Map<
+      string,
+      { key: string; variance: number; budgeted: number; actual: number }
+    >();
     for (const r of rows) {
       const k = `${r.category} · ${r.department}`;
       const cur = byCat.get(k) ?? { key: k, variance: 0, budgeted: 0, actual: 0 };
@@ -58,7 +77,10 @@ function AnalyticsPage() {
 
   return (
     <>
-      <PageHeader title="Analytics" description="Trends, variance, and top over/underspend across your data." />
+      <PageHeader
+        title="Analytics"
+        description="Trends, variance, and top over/underspend across your data."
+      />
       <PageBody>
         {rows.length === 0 ? (
           <EmptyState title="Nothing to analyze yet" description="Import a CSV first." />
@@ -68,19 +90,39 @@ function AnalyticsPage() {
               <ResponsiveContainer width="100%" height={280}>
                 <LineChart data={trend} margin={{ left: 8, right: 12, top: 8, bottom: 8 }}>
                   <CartesianGrid stroke="var(--color-border)" strokeDasharray="2 4" />
-                  <XAxis dataKey="period" tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }} stroke="var(--color-border)" />
+                  <XAxis
+                    dataKey="period"
+                    tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }}
+                    stroke="var(--color-border)"
+                  />
                   <YAxis
                     tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }}
                     stroke="var(--color-border)"
                     tickFormatter={(v) => `$${(Number(v) / 1000).toFixed(0)}k`}
                   />
                   <Tooltip
-                    contentStyle={{ background: "var(--color-background)", border: "1px solid var(--color-border)", fontSize: 12 }}
+                    contentStyle={{
+                      background: "var(--color-background)",
+                      border: "1px solid var(--color-border)",
+                      fontSize: 12,
+                    }}
                     formatter={(v) => fmtCurrency(Number(v))}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
-                  <Line type="monotone" dataKey="budgeted" stroke="var(--color-muted-foreground)" strokeDasharray="4 4" dot={false} />
-                  <Line type="monotone" dataKey="actual" stroke="var(--color-foreground)" strokeWidth={2} dot={{ r: 3, fill: "var(--color-foreground)" }} />
+                  <Line
+                    type="monotone"
+                    dataKey="budgeted"
+                    stroke="var(--color-muted-foreground)"
+                    strokeDasharray="4 4"
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="actual"
+                    stroke="var(--color-foreground)"
+                    strokeWidth={2}
+                    dot={{ r: 3, fill: "var(--color-foreground)" }}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </ChartCard>
@@ -89,14 +131,22 @@ function AnalyticsPage() {
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={byDept} margin={{ left: 8, right: 12, top: 8, bottom: 8 }}>
                   <CartesianGrid stroke="var(--color-border)" strokeDasharray="2 4" />
-                  <XAxis dataKey="department" tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }} stroke="var(--color-border)" />
+                  <XAxis
+                    dataKey="department"
+                    tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }}
+                    stroke="var(--color-border)"
+                  />
                   <YAxis
                     tick={{ fill: "var(--color-muted-foreground)", fontSize: 11 }}
                     stroke="var(--color-border)"
                     tickFormatter={(v) => `$${(Number(v) / 1000).toFixed(0)}k`}
                   />
                   <Tooltip
-                    contentStyle={{ background: "var(--color-background)", border: "1px solid var(--color-border)", fontSize: 12 }}
+                    contentStyle={{
+                      background: "var(--color-background)",
+                      border: "1px solid var(--color-border)",
+                      fontSize: 12,
+                    }}
                     formatter={(v) => fmtCurrency(Number(v))}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
@@ -120,16 +170,26 @@ function AnalyticsPage() {
 function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="rounded-lg border border-border p-4 sm:p-6">
-      <h2 className="mb-4 text-sm font-mono uppercase tracking-widest text-muted-foreground">{title}</h2>
+      <h2 className="mb-4 text-sm font-mono uppercase tracking-widest text-muted-foreground">
+        {title}
+      </h2>
       {children}
     </section>
   );
 }
 
-function RankList({ title, rows }: { title: string; rows: { key: string; variance: number; budgeted: number; actual: number }[] }) {
+function RankList({
+  title,
+  rows,
+}: {
+  title: string;
+  rows: { key: string; variance: number; budgeted: number; actual: number }[];
+}) {
   return (
     <section className="rounded-lg border border-border p-4 sm:p-6">
-      <h2 className="mb-4 text-sm font-mono uppercase tracking-widest text-muted-foreground">{title}</h2>
+      <h2 className="mb-4 text-sm font-mono uppercase tracking-widest text-muted-foreground">
+        {title}
+      </h2>
       <ul className="divide-y divide-border">
         {rows.map((r) => (
           <li key={r.key} className="flex items-center justify-between py-3">

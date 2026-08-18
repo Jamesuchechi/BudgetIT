@@ -15,9 +15,15 @@ export const Route = createFileRoute("/accept-invite")({
   head: () => ({
     meta: [
       { title: "Accept your BudgetIT invite" },
-      { name: "description", content: "Join a BudgetIT workspace using the invite link sent to your email." },
+      {
+        name: "description",
+        content: "Join a BudgetIT workspace using the invite link sent to your email.",
+      },
       { property: "og:title", content: "Accept your BudgetIT invite" },
-      { property: "og:description", content: "Join a BudgetIT workspace using the invite link sent to your email." },
+      {
+        property: "og:description",
+        content: "Join a BudgetIT workspace using the invite link sent to your email.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -26,9 +32,12 @@ export const Route = createFileRoute("/accept-invite")({
 
 function messageFor(raw: string): string {
   const m = raw.toLowerCase();
-  if (m.includes("email not verified")) return "Confirm your email address first, then open this link again.";
-  if (m.includes("different email")) return "This invite was sent to a different email address. Sign in with that address to accept it.";
-  if (m.includes("invalid or expired")) return "This invite link is no longer valid — it may have expired or already been used. Ask an admin to send a new one.";
+  if (m.includes("email not verified"))
+    return "Confirm your email address first, then open this link again.";
+  if (m.includes("different email"))
+    return "This invite was sent to a different email address. Sign in with that address to accept it.";
+  if (m.includes("invalid or expired"))
+    return "This invite link is no longer valid — it may have expired or already been used. Ask an admin to send a new one.";
   if (m.includes("not authenticated")) return "You need to be signed in to accept this invite.";
   return raw;
 }

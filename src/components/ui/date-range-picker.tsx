@@ -1,6 +1,14 @@
 import * as React from "react";
 import { CalendarIcon, ChevronDown } from "lucide-react";
-import { format, startOfMonth, endOfMonth, subMonths, startOfQuarter, endOfQuarter, startOfYear } from "date-fns";
+import {
+  format,
+  startOfMonth,
+  endOfMonth,
+  subMonths,
+  startOfQuarter,
+  endOfQuarter,
+  startOfYear,
+} from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
@@ -10,7 +18,8 @@ export interface DateRange {
   to: Date;
 }
 
-export type PresetOption = "this-month" | "last-month" | "this-quarter" | "ytd" | "all-time" | "custom";
+export type PresetOption =
+  "this-month" | "last-month" | "this-quarter" | "ytd" | "all-time" | "custom";
 
 interface DateRangePickerProps {
   value: DateRange;
@@ -72,7 +81,11 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ value, onChang
     <div className={cn("inline-flex items-center gap-2", className)}>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" size="sm" className="h-9 gap-2 font-medium text-xs justify-between min-w-[240px]">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-9 gap-2 font-medium text-xs justify-between min-w-[240px]"
+          >
             <span className="flex items-center gap-2 text-foreground">
               <CalendarIcon className="h-3.5 w-3.5 text-muted-foreground" />
               <span>
@@ -100,7 +113,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ value, onChang
                 onClick={() => applyPreset(p.id as PresetOption)}
                 className={cn(
                   "w-full text-left px-2 py-1.5 rounded text-xs transition-colors hover:bg-muted",
-                  selectedPreset === p.id && "bg-primary/10 text-primary font-semibold"
+                  selectedPreset === p.id && "bg-primary/10 text-primary font-semibold",
                 )}
               >
                 {p.label}

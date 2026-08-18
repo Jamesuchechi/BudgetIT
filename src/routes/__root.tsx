@@ -47,9 +47,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight">Something went wrong</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Try refreshing or head back home.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Try refreshing or head back home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -83,7 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams.",
       },
-      { property: "og:title", content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards" },
+      {
+        property: "og:title",
+        content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards",
+      },
       {
         property: "og:description",
         content:
@@ -91,8 +92,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards" },
-      { name: "twitter:description", content: "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams." },
+      {
+        name: "twitter:title",
+        content: "BudgetIT — Real-Time Financial Variance & Budget Dashboards",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Corporate budget management, expense tracking, and real-time financial variance analysis platform for enterprise teams.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

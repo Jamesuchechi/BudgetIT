@@ -4,7 +4,12 @@ import { useBudgetEntries } from "@/hooks/use-budget-entries";
 import { PageHeader, PageBody, StatCard, EmptyState } from "@/components/app/page";
 import { fmtCurrency, fmtPercent } from "@/lib/format";
 import {
-  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
 
 export const Route = createFileRoute("/app/dashboard")({
@@ -50,7 +55,10 @@ function DashboardPage() {
             title="No budget data yet"
             description="Import a CSV from your finance or CRM tool to see this page come alive."
             action={
-              <Link to="/app/import" className="inline-flex rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background">
+              <Link
+                to="/app/import"
+                className="inline-flex rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background"
+              >
                 Go to Import
               </Link>
             }
@@ -58,10 +66,26 @@ function DashboardPage() {
         ) : (
           <div className="space-y-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <StatCard label="Total Budgeted" value={fmtCurrency(summary.budgeted)} sub={`${summary.rows.length} line items`} />
-              <StatCard label="Total Spent" value={fmtCurrency(summary.actual)} sub={`${(summary.utilization * 100).toFixed(1)}% of plan`} />
-              <StatCard label="Variance" value={fmtCurrency(summary.variance)} sub={summary.variance >= 0 ? "under budget" : "over budget"} />
-              <StatCard label="Utilization" value={`${(summary.utilization * 100).toFixed(1)}%`} sub={fmtPercent(summary.utilization - 1) + " vs. plan"} />
+              <StatCard
+                label="Total Budgeted"
+                value={fmtCurrency(summary.budgeted)}
+                sub={`${summary.rows.length} line items`}
+              />
+              <StatCard
+                label="Total Spent"
+                value={fmtCurrency(summary.actual)}
+                sub={`${(summary.utilization * 100).toFixed(1)}% of plan`}
+              />
+              <StatCard
+                label="Variance"
+                value={fmtCurrency(summary.variance)}
+                sub={summary.variance >= 0 ? "under budget" : "over budget"}
+              />
+              <StatCard
+                label="Utilization"
+                value={`${(summary.utilization * 100).toFixed(1)}%`}
+                sub={fmtPercent(summary.utilization - 1) + " vs. plan"}
+              />
             </div>
 
             <BreakdownTable title="By Category" map={summary.byCategory} />
@@ -69,7 +93,9 @@ function DashboardPage() {
             <BreakdownTable title="By Period" map={summary.byPeriod} />
 
             <section>
-              <h2 className="mb-3 text-sm font-mono uppercase tracking-widest text-muted-foreground">Recent entries</h2>
+              <h2 className="mb-3 text-sm font-mono uppercase tracking-widest text-muted-foreground">
+                Recent entries
+              </h2>
               <div className="overflow-x-auto rounded-lg border border-border">
                 <Table>
                   <TableHeader>
@@ -90,8 +116,12 @@ function DashboardPage() {
                           <TableCell className="font-medium">{r.category}</TableCell>
                           <TableCell className="text-muted-foreground">{r.department}</TableCell>
                           <TableCell className="font-mono text-xs">{r.period}</TableCell>
-                          <TableCell className="text-right font-mono">{fmtCurrency(r.budgeted_amount)}</TableCell>
-                          <TableCell className="text-right font-mono">{fmtCurrency(r.actual_amount)}</TableCell>
+                          <TableCell className="text-right font-mono">
+                            {fmtCurrency(r.budgeted_amount)}
+                          </TableCell>
+                          <TableCell className="text-right font-mono">
+                            {fmtCurrency(r.actual_amount)}
+                          </TableCell>
                           <TableCell className="text-right font-mono">{fmtCurrency(v)}</TableCell>
                         </TableRow>
                       );
@@ -107,13 +137,21 @@ function DashboardPage() {
   );
 }
 
-function BreakdownTable({ title, map }: { title: string; map: Map<string, { budgeted: number; actual: number }> }) {
+function BreakdownTable({
+  title,
+  map,
+}: {
+  title: string;
+  map: Map<string, { budgeted: number; actual: number }>;
+}) {
   const rows = Array.from(map.entries())
     .map(([k, v]) => ({ key: k, ...v, variance: v.budgeted - v.actual }))
     .sort((a, b) => b.budgeted - a.budgeted);
   return (
     <section>
-      <h2 className="mb-3 text-sm font-mono uppercase tracking-widest text-muted-foreground">{title}</h2>
+      <h2 className="mb-3 text-sm font-mono uppercase tracking-widest text-muted-foreground">
+        {title}
+      </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <Table>
           <TableHeader>
@@ -136,7 +174,10 @@ function BreakdownTable({ title, map }: { title: string; map: Map<string, { budg
                   <TableCell className="text-right font-mono">{fmtCurrency(r.variance)}</TableCell>
                   <TableCell>
                     <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                      <div className="h-full bg-foreground" style={{ width: `${Math.min(util * 100, 100)}%` }} />
+                      <div
+                        className="h-full bg-foreground"
+                        style={{ width: `${Math.min(util * 100, 100)}%` }}
+                      />
                     </div>
                   </TableCell>
                 </TableRow>

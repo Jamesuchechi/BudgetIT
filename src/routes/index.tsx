@@ -41,7 +41,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
-  const [activeTab, setActiveTab] = useState<"variance" | "import" | "forecasting" | "security">("variance");
+  const [activeTab, setActiveTab] = useState<"variance" | "import" | "forecasting" | "security">(
+    "variance",
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
@@ -49,20 +51,38 @@ function Landing() {
       <header className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-gradient-to-b from-black/90 via-black/50 to-transparent backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3 font-bold tracking-tight">
-            <img src={logoImg} alt="BudgetIT Logo" className="h-9 w-9 rounded-lg object-contain shadow-lg ring-1 ring-white/20" />
+            <img
+              src={logoImg}
+              alt="BudgetIT Logo"
+              className="h-9 w-9 rounded-lg object-contain shadow-lg ring-1 ring-white/20"
+            />
             <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tight leading-none text-white drop-shadow">BudgetIT</span>
-              <span className="text-[9px] font-mono text-red-500 font-bold uppercase tracking-widest mt-0.5">Enterprise FP&A</span>
+              <span className="text-2xl font-black tracking-tight leading-none text-white drop-shadow">
+                BudgetIT
+              </span>
+              <span className="text-[9px] font-mono text-red-500 font-bold uppercase tracking-widest mt-0.5">
+                Enterprise FP&A
+              </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <a href="#features" className="transition-colors hover:text-white">Features</a>
-            <a href="#integrations" className="transition-colors hover:text-white">Integrations</a>
-            <a href="#variance" className="transition-colors hover:text-white">Variance Engine</a>
-            <a href="#faq" className="transition-colors hover:text-white">FAQ</a>
-            <Link to="/docs" className="transition-colors hover:text-white">Docs</Link>
+            <a href="#features" className="transition-colors hover:text-white">
+              Features
+            </a>
+            <a href="#integrations" className="transition-colors hover:text-white">
+              Integrations
+            </a>
+            <a href="#variance" className="transition-colors hover:text-white">
+              Variance Engine
+            </a>
+            <a href="#faq" className="transition-colors hover:text-white">
+              FAQ
+            </a>
+            <Link to="/docs" className="transition-colors hover:text-white">
+              Docs
+            </Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -74,11 +94,11 @@ function Landing() {
             >
               Sign In
             </Link>
-            <Link
-              to="/auth"
-              search={{ mode: "signup" }}
-            >
-              <Button size="sm" className="font-bold bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-600/30 px-4">
+            <Link to="/auth" search={{ mode: "signup" }}>
+              <Button
+                size="sm"
+                className="font-bold bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-600/30 px-4"
+              >
                 Launch Workspace
               </Button>
             </Link>
@@ -101,7 +121,10 @@ function Landing() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full text-center">
-          <Badge variant="outline" className="mb-6 px-4 py-1.5 border-red-500/50 bg-red-600/20 text-red-400 backdrop-blur-md rounded-full font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2 shadow-lg">
+          <Badge
+            variant="outline"
+            className="mb-6 px-4 py-1.5 border-red-500/50 bg-red-600/20 text-red-400 backdrop-blur-md rounded-full font-mono text-xs uppercase tracking-widest inline-flex items-center gap-2 shadow-lg"
+          >
             <Sparkles className="h-4 w-4 text-red-500" /> Netflix-Class Spend Intelligence
           </Badge>
 
@@ -111,7 +134,9 @@ function Landing() {
           </h1>
 
           <p className="mt-6 text-xl sm:text-2xl text-gray-200 font-medium max-w-3xl mx-auto drop-shadow-md">
-            Sub-second query performance. Connect multi-format exports (<span className="text-white font-bold">Excel, CSV, QuickBooks, NetSuite</span>) seamlessly.
+            Sub-second query performance. Connect multi-format exports (
+            <span className="text-white font-bold">Excel, CSV, QuickBooks, NetSuite</span>)
+            seamlessly.
           </p>
 
           {/* Netflix-Style Email / Workspace Input CTA Bar */}
@@ -131,7 +156,10 @@ function Landing() {
                 className="h-14 px-5 rounded-md bg-black/70 border border-gray-500 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent w-full sm:flex-1 text-base shadow-2xl backdrop-blur-md transition-all"
               />
               <Link to="/auth" search={{ mode: "signup" }} className="w-full sm:w-auto">
-                <Button size="lg" className="h-14 px-8 text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-md shadow-xl shadow-red-600/50 gap-2 w-full sm:w-auto transition-transform hover:scale-[1.03] active:scale-95">
+                <Button
+                  size="lg"
+                  className="h-14 px-8 text-lg font-bold bg-red-600 hover:bg-red-700 text-white rounded-md shadow-xl shadow-red-600/50 gap-2 w-full sm:w-auto transition-transform hover:scale-[1.03] active:scale-95"
+                >
                   Get Started <ChevronRight className="h-6 w-6 stroke-[3]" />
                 </Button>
               </Link>
@@ -139,9 +167,15 @@ function Landing() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-200 font-medium">
-            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> No credit card required</span>
-            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> Sub-second query speed</span>
-            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md"><CheckCircle2 className="h-4 w-4 text-emerald-400" /> Enterprise RLS Security</span>
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" /> No credit card required
+            </span>
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" /> Sub-second query speed
+            </span>
+            <span className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-md">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" /> Enterprise RLS Security
+            </span>
           </div>
         </div>
 
@@ -157,19 +191,27 @@ function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl sm:text-4xl font-black text-foreground">$2.4B+</div>
-              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">Budget Allocated Managed</div>
+              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                Budget Allocated Managed
+              </div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl font-black text-foreground">450+</div>
-              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">Enterprise Finance Teams</div>
+              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                Enterprise Finance Teams
+              </div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl font-black text-foreground">99.99%</div>
-              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">System Uptime SLA</div>
+              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                System Uptime SLA
+              </div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl font-black text-foreground">&lt; 100ms</div>
-              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">Real-Time Query Latency</div>
+              <div className="mt-1 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                Real-Time Query Latency
+              </div>
             </div>
           </div>
         </div>
@@ -179,7 +221,10 @@ function Landing() {
       <section id="integrations" className="py-20 sm:py-28 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="outline" className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30">
+            <Badge
+              variant="outline"
+              className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30"
+            >
               Universal Import Hub
             </Badge>
             <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
@@ -187,7 +232,8 @@ function Landing() {
               <span className="text-gradient">Any Financial Data, Instantly Unified.</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Whether your team exports Excel workbooks, raw CSV files, PDF bank statements, or ERP ledgers, BudgetIT ingests, validates, and normalizes financial entries in seconds.
+              Whether your team exports Excel workbooks, raw CSV files, PDF bank statements, or ERP
+              ledgers, BudgetIT ingests, validates, and normalizes financial entries in seconds.
             </p>
           </div>
 
@@ -230,8 +276,13 @@ function Landing() {
                 color: "text-indigo-500 bg-indigo-500/10",
               },
             ].map((f, idx) => (
-              <div key={idx} className="group rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md">
-                <div className={`grid h-12 w-12 place-items-center rounded-lg ${f.color} transition-transform group-hover:scale-110`}>
+              <div
+                key={idx}
+                className="group rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md"
+              >
+                <div
+                  className={`grid h-12 w-12 place-items-center rounded-lg ${f.color} transition-transform group-hover:scale-110`}
+                >
                   <f.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-lg font-bold tracking-tight">{f.title}</h3>
@@ -247,14 +298,19 @@ function Landing() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge variant="outline" className="mb-4 font-mono text-xs uppercase tracking-widest text-destructive border-destructive/30">
+              <Badge
+                variant="outline"
+                className="mb-4 font-mono text-xs uppercase tracking-widest text-destructive border-destructive/30"
+              >
                 The FP&A Bottleneck
               </Badge>
               <h2 className="text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                 Kill the Quarterly Spreadsheet Rebuild Cycle
               </h2>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                Traditional quarterly budgeting wastes hundreds of hours fixing broken VLOOKUPs, hunting down untracked vendor receipts, and emailing static Excel attachments that are outdated the moment they hit an inbox.
+                Traditional quarterly budgeting wastes hundreds of hours fixing broken VLOOKUPs,
+                hunting down untracked vendor receipts, and emailing static Excel attachments that
+                are outdated the moment they hit an inbox.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -289,10 +345,18 @@ function Landing() {
                   <span>❌ Old Spreadsheet Way</span>
                 </div>
                 <ul className="space-y-2.5 text-xs text-muted-foreground">
-                  <li className="flex items-center gap-2">⚠️ Broken formulas & circular references</li>
-                  <li className="flex items-center gap-2">⚠️ Outdated PDF decks in leadership meetings</li>
-                  <li className="flex items-center gap-2">⚠️ Unexpected budget overruns discovered late</li>
-                  <li className="flex items-center gap-2">⚠️ Zero audit history or role permissions</li>
+                  <li className="flex items-center gap-2">
+                    ⚠️ Broken formulas & circular references
+                  </li>
+                  <li className="flex items-center gap-2">
+                    ⚠️ Outdated PDF decks in leadership meetings
+                  </li>
+                  <li className="flex items-center gap-2">
+                    ⚠️ Unexpected budget overruns discovered late
+                  </li>
+                  <li className="flex items-center gap-2">
+                    ⚠️ Zero audit history or role permissions
+                  </li>
                 </ul>
               </div>
 
@@ -302,8 +366,12 @@ function Landing() {
                 </div>
                 <ul className="space-y-2.5 text-xs text-foreground font-medium">
                   <li className="flex items-center gap-2">✨ Live multi-format data ingestion</li>
-                  <li className="flex items-center gap-2">✨ Real-time interactive variance dashboard</li>
-                  <li className="flex items-center gap-2">✨ Automated threshold notification alerts</li>
+                  <li className="flex items-center gap-2">
+                    ✨ Real-time interactive variance dashboard
+                  </li>
+                  <li className="flex items-center gap-2">
+                    ✨ Automated threshold notification alerts
+                  </li>
                   <li className="flex items-center gap-2">✨ Multi-tenant RBAC & audit logging</li>
                 </ul>
               </div>
@@ -316,14 +384,18 @@ function Landing() {
       <section id="variance" className="py-20 sm:py-28 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="outline" className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30">
+            <Badge
+              variant="outline"
+              className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30"
+            >
               Platform Deep-Dive
             </Badge>
             <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
               Engineered for Precision & Speed
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Select a module below to preview how BudgetIT streamlines financial workflows across your entire organization.
+              Select a module below to preview how BudgetIT streamlines financial workflows across
+              your entire organization.
             </p>
 
             {/* Tab Selector */}
@@ -354,9 +426,13 @@ function Landing() {
             {activeTab === "variance" && (
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black tracking-tight">Automatic Dollar ($) & Percentage (%) Variance</h3>
+                  <h3 className="text-2xl font-black tracking-tight">
+                    Automatic Dollar ($) & Percentage (%) Variance
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    BudgetIT continuously tracks actual line-item expenses against allocated caps by period, department, and category. Get instant status tags: Under Budget (Green), Near Cap (Yellow), or Over Budget (Red).
+                    BudgetIT continuously tracks actual line-item expenses against allocated caps by
+                    period, department, and category. Get instant status tags: Under Budget (Green),
+                    Near Cap (Yellow), or Over Budget (Red).
                   </p>
                   <div className="pt-2 space-y-2">
                     <div className="flex items-center justify-between p-3 rounded-lg border border-border bg-background text-xs font-mono">
@@ -377,7 +453,8 @@ function Landing() {
                   <PieChart className="h-16 w-16 text-primary mb-4" />
                   <div className="text-lg font-bold">Interactive Recharts Analytics</div>
                   <p className="mt-1 text-xs text-muted-foreground max-w-sm">
-                    Donut, bar, and trend charts allow department heads to slice financial data with zero SQL or spreadsheet setup.
+                    Donut, bar, and trend charts allow department heads to slice financial data with
+                    zero SQL or spreadsheet setup.
                   </p>
                 </div>
               </div>
@@ -386,9 +463,13 @@ function Landing() {
             {activeTab === "import" && (
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black tracking-tight">Flexible Column Mapping & Validation Preview</h3>
+                  <h3 className="text-2xl font-black tracking-tight">
+                    Flexible Column Mapping & Validation Preview
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Drop any spreadsheet or export into the Import Wizard. Our fuzzy header matching engine auto-detects date, vendor, category, and amount columns. Inspect dry-run results before committing.
+                    Drop any spreadsheet or export into the Import Wizard. Our fuzzy header matching
+                    engine auto-detects date, vendor, category, and amount columns. Inspect dry-run
+                    results before committing.
                   </p>
                   <div className="rounded-lg border border-border bg-background p-4 font-mono text-xs space-y-2">
                     <div className="text-muted-foreground">// Auto-matched columns:</div>
@@ -410,19 +491,24 @@ function Landing() {
             {activeTab === "forecasting" && (
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black tracking-tight">Predictive Velocity & Run-Rate Engine</h3>
+                  <h3 className="text-2xl font-black tracking-tight">
+                    Predictive Velocity & Run-Rate Engine
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Don't wait until period-end to discover budget overruns. BudgetIT computes daily spend speed to project projected end-of-month and quarter-end outcomes.
+                    Don't wait until period-end to discover budget overruns. BudgetIT computes daily
+                    spend speed to project projected end-of-month and quarter-end outcomes.
                   </p>
                   <div className="p-4 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-                    ⚠️ Forecast Warning: Based on your current 18-day velocity, Cloud Infrastructure is on track to exceed Q3 cap by $3,400.
+                    ⚠️ Forecast Warning: Based on your current 18-day velocity, Cloud Infrastructure
+                    is on track to exceed Q3 cap by $3,400.
                   </div>
                 </div>
                 <div className="rounded-xl border border-border bg-muted/30 p-6 flex flex-col justify-center items-center text-center">
                   <LineChart className="h-16 w-16 text-amber-500 mb-4" />
                   <div className="text-lg font-bold">Run-Rate Velocity Model</div>
                   <p className="mt-1 text-xs text-muted-foreground max-w-sm">
-                    Calculates projected outcome = (Current Spend / Days Elapsed) × Total Days in Period.
+                    Calculates projected outcome = (Current Spend / Days Elapsed) × Total Days in
+                    Period.
                   </p>
                 </div>
               </div>
@@ -431,14 +517,24 @@ function Landing() {
             {activeTab === "security" && (
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black tracking-tight">Supabase Row-Level Security (RLS) Multi-Tenancy</h3>
+                  <h3 className="text-2xl font-black tracking-tight">
+                    Supabase Row-Level Security (RLS) Multi-Tenancy
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Every transaction and budget cap is isolated per organization workspace. Fine-grained roles (Owner, Admin, Member, Viewer) prevent unauthorized salary or budget disclosure.
+                    Every transaction and budget cap is isolated per organization workspace.
+                    Fine-grained roles (Owner, Admin, Member, Viewer) prevent unauthorized salary or
+                    budget disclosure.
                   </p>
                   <div className="space-y-2 text-xs">
-                    <div className="flex items-center gap-2 text-emerald-500 font-semibold"><CheckCircle2 className="h-4 w-4" /> Encrypted data in transit and at rest</div>
-                    <div className="flex items-center gap-2 text-emerald-500 font-semibold"><CheckCircle2 className="h-4 w-4" /> Granular RBAC permission hooks</div>
-                    <div className="flex items-center gap-2 text-emerald-500 font-semibold"><CheckCircle2 className="h-4 w-4" /> Immutable activity audit logs</div>
+                    <div className="flex items-center gap-2 text-emerald-500 font-semibold">
+                      <CheckCircle2 className="h-4 w-4" /> Encrypted data in transit and at rest
+                    </div>
+                    <div className="flex items-center gap-2 text-emerald-500 font-semibold">
+                      <CheckCircle2 className="h-4 w-4" /> Granular RBAC permission hooks
+                    </div>
+                    <div className="flex items-center gap-2 text-emerald-500 font-semibold">
+                      <CheckCircle2 className="h-4 w-4" /> Immutable activity audit logs
+                    </div>
                   </div>
                 </div>
                 <div className="rounded-xl border border-border bg-muted/30 p-6 flex flex-col justify-center items-center text-center">
@@ -458,12 +554,18 @@ function Landing() {
       <section id="faq" className="py-20 sm:py-28 border-b border-border bg-muted/10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30">
+            <Badge
+              variant="outline"
+              className="mb-4 font-mono text-xs uppercase tracking-widest text-primary border-primary/30"
+            >
               Got Questions?
             </Badge>
-            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Everything you need to know about BudgetIT deployment, data formats, and multi-tenancy.
+              Everything you need to know about BudgetIT deployment, data formats, and
+              multi-tenancy.
             </p>
           </div>
 
@@ -490,7 +592,11 @@ function Landing() {
                 a: "Yes. BudgetIT includes 6 default RBAC roles: Owner, Admin, Finance Manager, Department Lead, Contributor, and Viewer (read-only).",
               },
             ].map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="rounded-xl border border-border bg-card px-6">
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="rounded-xl border border-border bg-card px-6"
+              >
                 <AccordionTrigger className="text-left font-semibold text-sm sm:text-base py-4 hover:no-underline">
                   {faq.q}
                 </AccordionTrigger>
@@ -512,11 +618,15 @@ function Landing() {
                 Ready to Upgrade Your Corporate FP&A?
               </h2>
               <p className="mt-4 text-base sm:text-lg text-white/80">
-                Join 450+ enterprise finance teams tracking budgets, variance, and run rates in real time.
+                Join 450+ enterprise finance teams tracking budgets, variance, and run rates in real
+                time.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
                 <Link to="/auth" search={{ mode: "signup" }}>
-                  <Button size="lg" className="w-full sm:w-auto h-12 px-8 font-semibold bg-white text-black hover:bg-white/90 shadow-xl gap-2">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto h-12 px-8 font-semibold bg-white text-black hover:bg-white/90 shadow-xl gap-2"
+                  >
                     Create Free Workspace <ArrowRight className="h-5 w-5" />
                   </Button>
                 </Link>
@@ -533,11 +643,16 @@ function Landing() {
             {/* Brand Column */}
             <div className="col-span-2 space-y-4">
               <Link to="/" className="flex items-center gap-3 font-bold">
-                <img src={logoImg} alt="BudgetIT Logo" className="h-8 w-8 rounded-lg object-contain" />
+                <img
+                  src={logoImg}
+                  alt="BudgetIT Logo"
+                  className="h-8 w-8 rounded-lg object-contain"
+                />
                 <span className="text-xl font-black tracking-tight">BudgetIT</span>
               </Link>
               <p className="text-xs text-muted-foreground max-w-sm leading-relaxed">
-                Intelligent corporate budget management, expense tracking, and real-time financial variance analysis platform.
+                Intelligent corporate budget management, expense tracking, and real-time financial
+                variance analysis platform.
               </p>
               <div className="flex items-center gap-3 pt-2">
                 <ThemeToggle />
@@ -547,35 +662,85 @@ function Landing() {
 
             {/* Product Column */}
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">Product</h4>
+              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">
+                Product
+              </h4>
               <ul className="space-y-2.5 text-xs text-muted-foreground">
-                <li><Link to="/app/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link></li>
-                <li><Link to="/app/analytics" className="hover:text-foreground transition-colors">Analytics</Link></li>
-                <li><Link to="/app/import" className="hover:text-foreground transition-colors">Universal Import</Link></li>
-                <li><Link to="/app/export" className="hover:text-foreground transition-colors">Data Export</Link></li>
-                <li><Link to="/app/team" className="hover:text-foreground transition-colors">Team RBAC</Link></li>
+                <li>
+                  <Link to="/app/dashboard" className="hover:text-foreground transition-colors">
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/app/analytics" className="hover:text-foreground transition-colors">
+                    Analytics
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/app/import" className="hover:text-foreground transition-colors">
+                    Universal Import
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/app/export" className="hover:text-foreground transition-colors">
+                    Data Export
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/app/team" className="hover:text-foreground transition-colors">
+                    Team RBAC
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Resources Column */}
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">Resources</h4>
+              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">
+                Resources
+              </h4>
               <ul className="space-y-2.5 text-xs text-muted-foreground">
-                <li><Link to="/docs" className="hover:text-foreground transition-colors">Documentation</Link></li>
-                <li><a href="#integrations" className="hover:text-foreground transition-colors">Integrations</a></li>
-                <li><a href="#faq" className="hover:text-foreground transition-colors">FAQ</a></li>
-                <li><a href="#variance" className="hover:text-foreground transition-colors">Variance Model</a></li>
+                <li>
+                  <Link to="/docs" className="hover:text-foreground transition-colors">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <a href="#integrations" className="hover:text-foreground transition-colors">
+                    Integrations
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" className="hover:text-foreground transition-colors">
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="#variance" className="hover:text-foreground transition-colors">
+                    Variance Model
+                  </a>
+                </li>
               </ul>
             </div>
 
             {/* Legal Column */}
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">Security</h4>
+              <h4 className="text-xs font-mono uppercase tracking-widest text-foreground font-bold mb-4">
+                Security
+              </h4>
               <ul className="space-y-2.5 text-xs text-muted-foreground">
-                <li className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Supabase RLS</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> SOC 2 Compliant</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> GDPR Ready</li>
-                <li className="flex items-center gap-1.5"><Lock className="h-3.5 w-3.5 text-emerald-500" /> TLS Encryption</li>
+                <li className="flex items-center gap-1.5">
+                  <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Supabase RLS
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> SOC 2 Compliant
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> GDPR Ready
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <Lock className="h-3.5 w-3.5 text-emerald-500" /> TLS Encryption
+                </li>
               </ul>
             </div>
           </div>
@@ -583,9 +748,15 @@ function Landing() {
           <div className="mt-12 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
             <div>© {new Date().getFullYear()} BudgetIT Systems Inc. All rights reserved.</div>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-foreground transition-colors">Security Overview</a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Security Overview
+              </a>
             </div>
           </div>
         </div>

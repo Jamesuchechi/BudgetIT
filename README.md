@@ -18,15 +18,15 @@
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-| :--- | :--- |
-| **Framework** | [TanStack Start](https://tanstack.com/router) + [React 19](https://react.dev/) |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) (Strict Mode) |
-| **Build Tool** | [Vite 8](https://vitejs.dev/) |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) |
-| **Icons & Charts** | [Lucide React](https://lucide.dev/) + [Recharts](https://recharts.org/) |
-| **Backend & Auth** | [Supabase](https://supabase.com/) (PostgreSQL + Row-Level Security) |
-| **Data Fetching** | [TanStack Query v5](https://tanstack.com/query) |
+| Layer              | Technology                                                                          |
+| :----------------- | :---------------------------------------------------------------------------------- |
+| **Framework**      | [TanStack Start](https://tanstack.com/router) + [React 19](https://react.dev/)      |
+| **Language**       | [TypeScript](https://www.typescriptlang.org/) (Strict Mode)                         |
+| **Build Tool**     | [Vite 8](https://vitejs.dev/)                                                       |
+| **Styling**        | [Tailwind CSS v4](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) |
+| **Icons & Charts** | [Lucide React](https://lucide.dev/) + [Recharts](https://recharts.org/)             |
+| **Backend & Auth** | [Supabase](https://supabase.com/) (PostgreSQL + Row-Level Security)                 |
+| **Data Fetching**  | [TanStack Query v5](https://tanstack.com/query)                                     |
 
 ---
 
@@ -69,6 +69,7 @@ BudgetIT/
 ### Prerequisites
 
 Ensure you have the following installed on your system:
+
 - **Node.js**: `^20.19.0` or higher
 - **npm** or **bun** package manager
 
@@ -105,19 +106,20 @@ The application will be accessible at `http://localhost:5173` (or the port alloc
 
 In the project directory, you can run:
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the local Vite development server |
-| `npm run build` | Builds the production server and client bundle |
-| `npm run preview` | Previews the local production build |
-| `npm run lint` | Runs ESLint to check for code issues |
-| `npm run format` | Formats codebase using Prettier |
+| Command           | Description                                    |
+| :---------------- | :--------------------------------------------- |
+| `npm run dev`     | Starts the local Vite development server       |
+| `npm run build`   | Builds the production server and client bundle |
+| `npm run preview` | Previews the local production build            |
+| `npm run lint`    | Runs ESLint to check for code issues           |
+| `npm run format`  | Formats codebase using Prettier                |
 
 ---
 
 ## 🔐 Security & Multi-Tenancy
 
 BudgetIT enforces strict data isolation using Supabase **Row-Level Security (RLS)**:
+
 - Users can only query or mutate budget entries associated with organizations they belong to (`is_org_member(org_id, auth.uid())`).
 - Admin functions (such as inviting team members or changing org settings) are guarded by `has_org_role(org_id, 'admin', auth.uid())`.
 

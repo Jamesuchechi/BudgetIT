@@ -1,6 +1,12 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 
 export type CurrencyCode = "USD" | "EUR" | "GBP" | "NGN" | "CAD" | "AUD";
@@ -35,12 +41,13 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
       placeholder = "0.00",
       ...props
     },
-    ref
+    ref,
   ) => {
     // Format numeric value with thousand separators
     const formatDisplay = (numVal: number | string): string => {
       if (numVal === "" || numVal === null || numVal === undefined) return "";
-      const n = typeof numVal === "number" ? numVal : parseFloat(numVal.toString().replace(/,/g, ""));
+      const n =
+        typeof numVal === "number" ? numVal : parseFloat(numVal.toString().replace(/,/g, ""));
       if (isNaN(n)) return "";
       return new Intl.NumberFormat("en-US", {
         minimumFractionDigits: 0,
@@ -58,7 +65,7 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
       const rawInput = e.target.value;
       // Strip out non-digit and non-period characters
       const clean = rawInput.replace(/[^0-9.]/g, "");
-      
+
       // Ensure single decimal point
       const parts = clean.split(".");
       if (parts.length > 2) return;
@@ -75,9 +82,18 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
     const currencyInfo = CURRENCY_MAP[currency] || CURRENCY_MAP.USD;
 
     return (
-      <div className={cn("flex items-center rounded-md border border-input bg-background shadow-xs focus-within:ring-1 focus-within:ring-ring", className)}>
+      <div
+        className={cn(
+          "flex items-center rounded-md border border-input bg-background shadow-xs focus-within:ring-1 focus-within:ring-ring",
+          className,
+        )}
+      >
         {showCurrencySelector && onCurrencyChange ? (
-          <Select value={currency} onValueChange={(val) => onCurrencyChange(val as CurrencyCode)} disabled={disabled}>
+          <Select
+            value={currency}
+            onValueChange={(val) => onCurrencyChange(val as CurrencyCode)}
+            disabled={disabled}
+          >
             <SelectTrigger className="h-9 w-[110px] rounded-r-none border-0 border-r border-input bg-muted/40 text-xs font-semibold focus:ring-0">
               <SelectValue placeholder="Currency" />
             </SelectTrigger>
@@ -109,7 +125,7 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
         />
       </div>
     );
-  }
+  },
 );
 
 CurrencyInput.displayName = "CurrencyInput";

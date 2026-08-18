@@ -39,7 +39,10 @@ export function PageHeader({
             {title}
           </h1>
           {currentOrg && (
-            <Badge variant="outline" className="hidden sm:inline-flex font-mono text-[10px] uppercase tracking-wider">
+            <Badge
+              variant="outline"
+              className="hidden sm:inline-flex font-mono text-[10px] uppercase tracking-wider"
+            >
               {currentOrg.name}
             </Badge>
           )}
@@ -62,14 +65,24 @@ export function PageBody({ children }: { children: ReactNode }) {
 export function StatCard({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div className="rounded-lg border border-border p-5 bg-card text-card-foreground shadow-sm transition-all hover:border-foreground/20">
-      <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{label}</div>
+      <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+        {label}
+      </div>
       <div className="mt-2 text-2xl font-black tracking-tight sm:text-3xl">{value}</div>
       {sub && <div className="mt-1 text-xs text-muted-foreground">{sub}</div>}
     </div>
   );
 }
 
-export function EmptyState({ title, description, action }: { title: string; description: string; action?: ReactNode }) {
+export function EmptyState({
+  title,
+  description,
+  action,
+}: {
+  title: string;
+  description: string;
+  action?: ReactNode;
+}) {
   return (
     <div className="rounded-lg border border-dashed border-border p-10 text-center">
       <div className="text-lg font-semibold">{title}</div>

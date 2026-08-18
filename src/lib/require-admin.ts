@@ -24,8 +24,7 @@ export async function requireOrgAdmin(): Promise<void> {
   const stored = typeof window !== "undefined" ? localStorage.getItem("bp_current_org") : null;
   // Mirror the shell: fall back to the first membership when nothing is selected
   // yet, or when the stored org is not one the caller belongs to.
-  const active =
-    memberships.find((m) => m.org_id === stored) ?? memberships[0];
+  const active = memberships.find((m) => m.org_id === stored) ?? memberships[0];
 
   if (active.role !== "admin") throw redirect({ to: "/app/dashboard" });
 }

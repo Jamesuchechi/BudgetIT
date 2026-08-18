@@ -22,11 +22,11 @@ const TableHeader = React.forwardRef<HTMLTableSectionElement, TableHeaderProps>(
       className={cn(
         "[&_tr]:border-b",
         sticky && "sticky top-0 z-20 bg-background/95 backdrop-blur-md shadow-xs",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 );
 TableHeader.displayName = "TableHeader";
 
@@ -134,7 +134,10 @@ const DataTableColumnHeader: React.FC<DataTableColumnHeaderProps> = ({
 }) => {
   return (
     <div
-      className={cn("flex items-center gap-1.5 cursor-pointer select-none group font-semibold text-foreground/80 hover:text-foreground", className)}
+      className={cn(
+        "flex items-center gap-1.5 cursor-pointer select-none group font-semibold text-foreground/80 hover:text-foreground",
+        className,
+      )}
       onClick={onSort}
       {...props}
     >
@@ -189,7 +192,7 @@ const DataTableSkeleton: React.FC<DataTableSkeletonProps> = ({ rows = 5, columns
             <div
               key={cIdx}
               className="h-8 rounded bg-muted/60 flex-1"
-              style={{ opacity: 1 - (rIdx * 0.15) }}
+              style={{ opacity: 1 - rIdx * 0.15 }}
             />
           ))}
         </div>
@@ -211,4 +214,3 @@ export {
   DataTableEmptyState,
   DataTableSkeleton,
 };
-
