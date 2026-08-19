@@ -179,6 +179,215 @@ export type Database = {
         };
         Relationships: [];
       };
+      fiscal_periods: {
+        Row: {
+          id: string;
+          org_id: string;
+          name: string;
+          type: "annual" | "quarterly" | "monthly";
+          start_date: string;
+          end_date: string;
+          status: "draft" | "active" | "closed" | "locked";
+          rollover_enabled: boolean;
+          carried_over_amount: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          name: string;
+          type: "annual" | "quarterly" | "monthly";
+          start_date: string;
+          end_date: string;
+          status?: "draft" | "active" | "closed" | "locked";
+          rollover_enabled?: boolean;
+          carried_over_amount?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          org_id?: string;
+          name?: string;
+          type?: "annual" | "quarterly" | "monthly";
+          start_date?: string;
+          end_date?: string;
+          status?: "draft" | "active" | "closed" | "locked";
+          rollover_enabled?: boolean;
+          carried_over_amount?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "fiscal_periods_org_id_fkey";
+            columns: ["org_id"];
+            isOneToOne: false;
+            referencedRelation: "organizations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      categories: {
+        Row: {
+          id: string;
+          org_id: string;
+          parent_id: string | null;
+          name: string;
+          color: string | null;
+          icon: string | null;
+          budget_cap: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          parent_id?: string | null;
+          name: string;
+          color?: string | null;
+          icon?: string | null;
+          budget_cap?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          org_id?: string;
+          parent_id?: string | null;
+          name?: string;
+          color?: string | null;
+          icon?: string | null;
+          budget_cap?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "categories_org_id_fkey";
+            columns: ["org_id"];
+            isOneToOne: false;
+            referencedRelation: "organizations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      departments: {
+        Row: {
+          id: string;
+          org_id: string;
+          name: string;
+          code: string | null;
+          is_archived: boolean;
+          budget_cap: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          name: string;
+          code?: string | null;
+          is_archived?: boolean;
+          budget_cap?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          org_id?: string;
+          name?: string;
+          code?: string | null;
+          is_archived?: boolean;
+          budget_cap?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "departments_org_id_fkey";
+            columns: ["org_id"];
+            isOneToOne: false;
+            referencedRelation: "organizations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      expenses: {
+        Row: {
+          id: string;
+          org_id: string;
+          period_id: string | null;
+          period_name: string;
+          title: string;
+          amount: number;
+          date: string;
+          department: string;
+          category: string;
+          vendor: string | null;
+          payment_method: "credit_card" | "wire_transfer" | "direct_debit" | "petty_cash";
+          receipt_url: string | null;
+          notes: string | null;
+          status: "planned" | "pending_approval" | "approved" | "paid";
+          is_recurring: boolean;
+          recurring_frequency: "monthly" | "quarterly" | "annual" | null;
+          created_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          period_id?: string | null;
+          period_name: string;
+          title: string;
+          amount: number;
+          date?: string;
+          department: string;
+          category: string;
+          vendor?: string | null;
+          payment_method?: "credit_card" | "wire_transfer" | "direct_debit" | "petty_cash";
+          receipt_url?: string | null;
+          notes?: string | null;
+          status?: "planned" | "pending_approval" | "approved" | "paid";
+          is_recurring?: boolean;
+          recurring_frequency?: "monthly" | "quarterly" | "annual" | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          org_id?: string;
+          period_id?: string | null;
+          period_name?: string;
+          title?: string;
+          amount?: number;
+          date?: string;
+          department?: string;
+          category?: string;
+          vendor?: string | null;
+          payment_method?: "credit_card" | "wire_transfer" | "direct_debit" | "petty_cash";
+          receipt_url?: string | null;
+          notes?: string | null;
+          status?: "planned" | "pending_approval" | "approved" | "paid";
+          is_recurring?: boolean;
+          recurring_frequency?: "monthly" | "quarterly" | "annual" | null;
+          created_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "expenses_org_id_fkey";
+            columns: ["org_id"];
+            isOneToOne: false;
+            referencedRelation: "organizations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       profiles: {
         Row: {
           created_at: string;

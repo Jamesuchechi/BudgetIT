@@ -112,21 +112,21 @@ This document serves as the master production roadmap, feature backlog, and oper
 
 ### 3.1 Fiscal Period Management
 
-- [ ] Multi-period support: Annual (FY2025, FY2026), Quarterly (Q1-Q4), and Monthly (Jan-Dec).
-- [ ] Custom fiscal year offset configuration (e.g. FY starting April 1st for UK/India tax years).
-- [ ] Budget rollover engine: Option to carry over unspent funds or budget deficits into the next period.
-- [ ] Period Status Management: Mark periods as `Draft`, `Active`, `Closed`, or `Locked`.
+- [x] Multi-period support: Annual (FY2025, FY2026), Quarterly (Q1-Q4), and Monthly (Jan-Dec).
+- [x] Custom fiscal year offset configuration (e.g. FY starting April 1st for UK/India tax years).
+- [x] Budget rollover engine: Option to carry over unspent funds or budget deficits into the next period.
+- [x] Period Status Management: Mark periods as `Draft`, `Active`, `Closed`, or `Locked`.
 
 ### 3.2 Category & Department Structure
 
-- [ ] Two-tier category hierarchy: Parent Categories (e.g. _Operating Expenses_) & Child Categories (e.g. _SaaS Subscriptions_, _Cloud Infrastructure_).
-- [ ] Custom category color tagging and icon assignment for visual recognition.
-- [ ] Department/Cost-Center management: Add, rename, archive departments (e.g. Engineering, Sales, Product, Ops, HR).
-- [ ] Assign budget caps per department and sub-category.
+- [x] Two-tier category hierarchy: Parent Categories (e.g. _Operating Expenses_) & Child Categories (e.g. _SaaS Subscriptions_, _Cloud Infrastructure_).
+- [x] Custom category color tagging and icon assignment for visual recognition.
+- [x] Department/Cost-Center management: Add, rename, archive departments (e.g. Engineering, Sales, Product, Ops, HR).
+- [x] Assign budget caps per department and sub-category.
 
 ### 3.3 Expense & Line-Item Tracking
 
-- [ ] Add/Edit/Delete expense entries with fields:
+- [x] Add/Edit/Delete expense entries with fields:
   - `Title / Description`
   - `Amount`
   - `Date`
@@ -136,53 +136,53 @@ This document serves as the master production roadmap, feature backlog, and oper
   - `Payment Method` (Credit Card, Wire Transfer, Direct Debit, Petty Cash)
   - `Receipt Attachment` (Image/PDF upload)
   - `Notes / Reference Code`
-- [ ] Mark expense status: `Planned`, `Pending Approval`, `Approved`, `Paid`.
-- [ ] Support recurring expense templates (e.g. monthly AWS bill, quarterly software renewal).
-- [ ] Support negative expense line items for refunds, rebates, or credits.
+- [x] Mark expense status: `Planned`, `Pending Approval`, `Approved`, `Paid`.
+- [x] Support recurring expense templates (e.g. monthly AWS bill, quarterly software renewal).
+- [x] Support negative expense line items for refunds, rebates, or credits.
 
 ### 3.4 Financial Variance Engine
 
-- [ ] Real-time calculation formulas:
+- [x] Real-time calculation formulas:
   - $\text{Variance Amount} = \text{Budgeted Amount} - \text{Actual Amount}$
   - $\text{Spend Percentage} = \left( \frac{\text{Actual Amount}}{\text{Budgeted Amount}} \right) \times 100$
   - $\text{Remaining Cap} = \text{Budgeted Amount} - \text{Actual Amount}$
-- [ ] Automated visual status badges:
+- [x] Automated visual status badges:
   - 🟢 **Under Budget**: $< 80\%$ spent
   - 🟡 **Near Limit**: $80\% - 99.9\%$ spent
   - 🔴 **Over Budget**: $\ge 100\%$ spent
-- [ ] Department-level and Category-level variance rollup summaries.
+- [x] Department-level and Category-level variance rollup summaries.
 
 ---
 
 ## 📥 Phase 4: Smart Data Engine — CSV Import, Validation & Export
 
-### 4.1 Intelligent CSV Import Wizard (`src/routes/app.import.tsx`)
+### 4.1 Intelligent CSV/excel/pdf Import Wizard (`src/routes/app.import.tsx`)
 
-- [ ] Drag-and-drop CSV dropzone with file type and size checks.
-- [ ] Support common CSV formats exported from QuickBooks, Xero, Stripe, Ramp, Brex, and Excel.
-- [ ] Automatic column header fuzzy matching engine (e.g. mapping "Cost", "Price", "Amount" -> `amount`).
-- [ ] Manual column mapping dropdown selector for unmapped headers.
-- [ ] Save mapping templates for recurring imports.
+- [x] Drag-and-drop CSV/excel/pdf dropzone with file type and size checks.
+- [x] Support common CSV/excel/pdf formats exported from QuickBooks, Xero, Stripe, Ramp, Brex, and Excel.
+- [x] Automatic column header fuzzy matching engine (e.g. mapping "Cost", "Price", "Amount" -> `amount`).
+- [x] Manual column mapping dropdown selector for unmapped headers.
+- [x] Save mapping templates for recurring imports.
 
 ### 4.2 Dry-Run Pre-Flight Validation Engine
 
-- [ ] Parse and display a dry-run validation table before inserting records into database.
-- [ ] Flag data errors inline:
+- [x] Parse and display a dry-run validation table before inserting records into database.
+- [x] Flag data errors inline:
   - Missing mandatory fields (Date, Category, Amount).
   - Invalid date formats (automatically parse ISO, MM/DD/YYYY, DD/MM/YYYY).
   - Non-numeric or negative amount values.
   - Unrecognized categories/departments (prompt to auto-create or remap).
   - Potential duplicate transactions based on date + vendor + amount.
-- [ ] Ability to edit cell values inline inside the validation preview table.
-- [ ] Batch commit progress bar with success summary report.
+- [x] Ability to edit cell values inline inside the validation preview table.
+- [x] Batch commit progress bar with success summary report.
 
 ### 4.3 Flexible Data Export Engine (`src/routes/app.export.tsx`)
 
-- [ ] Export filtered financial tables to CSV with custom delimiter selection (comma, semicolon).
-- [ ] Export to formatted Microsoft Excel (`.xlsx`) spreadsheets with auto-formatted currencies and totals.
-- [ ] Export to PDF Executive Report:
+- [x] Export filtered financial tables to CSV with custom delimiter selection (comma, semicolon).
+- [x] Export to formatted Microsoft Excel (`.xlsx`) spreadsheets with auto-formatted currencies and totals.
+- [x] Export to PDF Executive Report:
   - Clean printable layout with company logo, period header, KPI cards, and category breakdown table.
-- [ ] Scheduled recurring exports delivered via email (Weekly/Monthly).
+- [x] Scheduled recurring exports delivered via email (Weekly/Monthly).
 
 ---
 

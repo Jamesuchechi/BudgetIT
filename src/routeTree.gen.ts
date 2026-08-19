@@ -16,7 +16,9 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
+import { Route as AppBudgetsRouteImport } from './routes/app.budgets'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppExpensesRouteImport } from './routes/app.expenses'
 import { Route as AppExportRouteImport } from './routes/app.export'
 import { Route as AppImportRouteImport } from './routes/app.import'
 import { Route as AppOnboardingRouteImport } from './routes/app.onboarding'
@@ -59,9 +61,19 @@ const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBudgetsRoute = AppBudgetsRouteImport.update({
+  id: '/budgets',
+  path: '/budgets',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppExpensesRoute = AppExpensesRouteImport.update({
+  id: '/expenses',
+  path: '/expenses',
   getParentRoute: () => AppRoute,
 } as any)
 const AppExportRoute = AppExportRouteImport.update({
@@ -102,7 +114,9 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/docs': typeof DocsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/budgets': typeof AppBudgetsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/expenses': typeof AppExpensesRoute
   '/app/export': typeof AppExportRoute
   '/app/import': typeof AppImportRoute
   '/app/onboarding': typeof AppOnboardingRoute
@@ -117,7 +131,9 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/docs': typeof DocsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/budgets': typeof AppBudgetsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/expenses': typeof AppExpensesRoute
   '/app/export': typeof AppExportRoute
   '/app/import': typeof AppImportRoute
   '/app/onboarding': typeof AppOnboardingRoute
@@ -134,7 +150,9 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/docs': typeof DocsRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/budgets': typeof AppBudgetsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/expenses': typeof AppExpensesRoute
   '/app/export': typeof AppExportRoute
   '/app/import': typeof AppImportRoute
   '/app/onboarding': typeof AppOnboardingRoute
@@ -152,7 +170,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/docs'
     | '/app/analytics'
+    | '/app/budgets'
     | '/app/dashboard'
+    | '/app/expenses'
     | '/app/export'
     | '/app/import'
     | '/app/onboarding'
@@ -167,7 +187,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/docs'
     | '/app/analytics'
+    | '/app/budgets'
     | '/app/dashboard'
+    | '/app/expenses'
     | '/app/export'
     | '/app/import'
     | '/app/onboarding'
@@ -183,7 +205,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/docs'
     | '/app/analytics'
+    | '/app/budgets'
     | '/app/dashboard'
+    | '/app/expenses'
     | '/app/export'
     | '/app/import'
     | '/app/onboarding'
@@ -252,11 +276,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAnalyticsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/budgets': {
+      id: '/app/budgets'
+      path: '/budgets'
+      fullPath: '/app/budgets'
+      preLoaderRoute: typeof AppBudgetsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
       fullPath: '/app/dashboard'
       preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/expenses': {
+      id: '/app/expenses'
+      path: '/expenses'
+      fullPath: '/app/expenses'
+      preLoaderRoute: typeof AppExpensesRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/export': {
@@ -306,7 +344,9 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppBudgetsRoute: typeof AppBudgetsRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppExpensesRoute: typeof AppExpensesRoute
   AppExportRoute: typeof AppExportRoute
   AppImportRoute: typeof AppImportRoute
   AppOnboardingRoute: typeof AppOnboardingRoute
@@ -318,7 +358,9 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsRoute: AppAnalyticsRoute,
+  AppBudgetsRoute: AppBudgetsRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppExpensesRoute: AppExpensesRoute,
   AppExportRoute: AppExportRoute,
   AppImportRoute: AppImportRoute,
   AppOnboardingRoute: AppOnboardingRoute,

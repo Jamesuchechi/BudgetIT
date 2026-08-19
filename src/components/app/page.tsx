@@ -7,13 +7,17 @@ export function PageHeader({
   description,
   breadcrumbs,
   actions,
+  children,
 }: {
   title: string;
   description?: string;
   breadcrumbs?: { label: string; href?: string }[];
   actions?: ReactNode;
+  children?: ReactNode;
 }) {
   const { currentOrg } = useOrg();
+
+  const actionElements = actions || children;
 
   return (
     <header className="flex flex-col gap-4 border-b border-border p-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:p-6 lg:p-8">
@@ -49,9 +53,9 @@ export function PageHeader({
         </div>
         {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
       </div>
-      {actions && (
+      {actionElements && (
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center [&>*]:w-full sm:[&>*]:w-auto">
-          {actions}
+          {actionElements}
         </div>
       )}
     </header>

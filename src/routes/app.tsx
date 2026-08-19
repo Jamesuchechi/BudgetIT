@@ -26,6 +26,8 @@ import {
   ChevronsUpDown,
   BookOpen,
   Activity,
+  Calendar,
+  Receipt,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -48,6 +50,8 @@ const navItems = [
     adminOnly: false,
     writeOnly: false,
   },
+  { to: "/app/budgets", label: "Budgets", icon: Calendar, adminOnly: false, writeOnly: false },
+  { to: "/app/expenses", label: "Expenses", icon: Receipt, adminOnly: false, writeOnly: false },
   { to: "/app/analytics", label: "Analytics", icon: BarChart3, adminOnly: false, writeOnly: false },
   { to: "/app/import", label: "Import", icon: Upload, adminOnly: false, writeOnly: true },
   { to: "/app/export", label: "Export", icon: Download, adminOnly: false, writeOnly: false },

@@ -178,6 +178,9 @@ function ChartCard({ title, children }: { title: string; children: React.ReactNo
   );
 }
 
+import { getHealthBadgeConfig, calculateVariance } from "@/lib/variance-engine";
+import { Badge } from "@/components/ui/badge";
+
 function RankList({
   title,
   rows,
@@ -191,17 +194,26 @@ function RankList({
         {title}
       </h2>
       <ul className="divide-y divide-border">
-        {rows.map((r) => (
-          <li key={r.key} className="flex items-center justify-between py-3">
-            <div className="min-w-0 pr-4">
-              <div className="truncate text-sm font-medium">{r.key}</div>
-              <div className="text-xs text-muted-foreground">
-                Budget {fmtCurrency(r.budgeted)} · Actual {fmtCurrency(r.actual)}
+        {rows.map((r) => {
+          const m = calculateVariance(r.budgeted, r.actual);
+          const hc = getHealthBadgeConfig(m.health);
+          return (
+            <li key={r.key} className="flex items-center justify-between py-3">
+              <div className="min-w-0 pr-4 space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="truncate text-sm font-medium">{r.key}</span>
+                  <Badge variant="outline" className={`${hc.badgeClass} text-[9px] px-1 py-0`}>
+                    {hc.label}
+                  </Badge>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Budget {fmtCurrency(r.budgeted)} · Actual {fmtCurrency(r.actual)}
+                </div>
               </div>
-            </div>
-            <div className="shrink-0 font-mono text-sm">{fmtCurrency(r.variance)}</div>
-          </li>
-        ))}
+              <div className="shrink-0 font-mono text-sm font-semibold">{fmtCurrency(r.variance)}</div>
+            </li>
+          );
+        })}
         {rows.length === 0 && <li className="py-3 text-sm text-muted-foreground">No data.</li>}
       </ul>
     </section>
